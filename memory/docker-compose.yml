@@ -1,5 +1,9 @@
+# Default: only mem0-mcp (uses external postgres + ollama via POSTGRES_URL / OLLAMA_URL).
+# Standalone mode (all-in-one for dev): docker compose --profile standalone up -d
+
 services:
   postgres-memory:
+    profiles: [standalone]
     image: pgvector/pgvector:pg17
     container_name: memory-postgres
     restart: unless-stopped
@@ -17,6 +21,7 @@ services:
       retries: 5
 
   ollama:
+    profiles: [standalone]
     image: ollama/ollama:latest
     container_name: memory-ollama
     restart: unless-stopped
@@ -32,6 +37,7 @@ services:
       start_period: 20s
 
   ollama-init:
+    profiles: [standalone]
     image: ollama/ollama:latest
     container_name: memory-ollama-init
     restart: on-failure
@@ -53,18 +59,13 @@ services:
     container_name: memory-mem0-mcp
     restart: unless-stopped
     environment:
-      POSTGRES_URL: postgresql://mem0:${POSTGRES_PASSWORD}@postgres-memory:5432/mem0
-      OLLAMA_URL: http://ollama:11434
+      POSTGRES_URL: ${POSTGRES_URL:-postgresql://mem0:${POSTGRES_PASSWORD}@postgres-memory:5432/mem0}
+      OLLAMA_URL: ${OLLAMA_URL:-http://ollama:11434}
       EMBED_MODEL: ${EMBED_MODEL:-nomic-embed-text}
       LLM_MODEL: ${LLM_MODEL:-llama3.2:3b}
       MCP_PORT: "8765"
     ports:
-      - "127.0.0.1:8765:8765"
-    depends_on:
-      postgres-memory:
-        condition: service_healthy
-      ollama:
-        condition: service_healthy
+      - "0.0.0.0:8765:8765"
     healthcheck:
       test: ["CMD-SHELL", "curl -sf http://localhost:8765/health"]
       interval: 15s
