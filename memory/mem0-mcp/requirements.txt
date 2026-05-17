@@ -1,0 +1,5 @@
+mem0ai>=0.1.78
+fastmcp>=2.3.0
+psycopg2-binary>=2.9
+uvicorn[standard]>=0.30
+ollama>=0.3.0
