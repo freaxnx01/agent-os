@@ -1,6 +1,6 @@
 # agent-os
 
-Personal Agentic OS running on `claude-dev` (LXC 201). Claude Code CLI as execution layer, Forgejo as Git backend.
+Personal Agentic OS running on `agent-dev` (LXC 201). Claude Code CLI as execution layer, Forgejo as Git backend.
 
 ## Phases
 

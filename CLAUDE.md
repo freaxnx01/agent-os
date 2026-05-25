@@ -1,6 +1,6 @@
-# agent-os — Agentic OS for claude-dev
+# agent-os — Agentic OS for agent-dev
 
-**Host:** LXC 201 (`claude-dev`, `192.168.1.108`, Ubuntu 24.04)
+**Host:** LXC 201 (`agent-dev`, `192.168.1.108`, Ubuntu 24.04)
 **Repo:** `github.com/freaxnx01/public/agent-os` (mirrored to `git.home.freaxnx01.ch/freax/agent-os`)
 
 ## Build order
@@ -98,5 +98,5 @@ At **session end**: the Stop hook auto-fires. For richer context, call `add_memo
 
 ## Infrastructure references
 - MCP proxy: LXC 130, `https://mcp.home.freaxnx01.ch/<server>/mcp` — see homelab vault `Services/mcp-proxy.md`
-- clrepo + slot system: `~/projects/repos/github/freaxnx01/public/clrepo/` — see homelab vault `Services/claude-dev.md`
+- clrepo + slot system: `~/projects/repos/github/freaxnx01/public/clrepo/` — see homelab vault `Services/agent-dev.md`
 - Forgejo: `git.home.freaxnx01.ch` (SSH auth via `~/.ssh/config`)
