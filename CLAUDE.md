@@ -98,5 +98,5 @@ At **session end**: the Stop hook auto-fires. For richer context, call `add_memo
 
 ## Infrastructure references
 - MCP proxy: LXC 130, `https://mcp.home.freaxnx01.ch/<server>/mcp` — see homelab vault `Services/mcp-proxy.md`
-- clrepo + slot system: `~/projects/repos/github/freaxnx01/public/clrepo/` — see homelab vault `Services/agent-dev.md`
+- bridge + slot system: `~/projects/repos/github/freaxnx01/public/bridge/` — see homelab vault `Services/agent-dev.md`
 - Forgejo: `git.home.freaxnx01.ch` (SSH auth via `~/.ssh/config`)
